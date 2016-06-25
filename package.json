@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "browserify-header": "^0.9.2",
+    "browserify-licenses": "^0.1.1",
+    "uglifyjs": "^2.4.10"
+  },
+  "dependencies": {
+    "commonform-normalize": "^0.5.2"
+  },
+  "scripts": {
+    "licenses": "echo '/*\n@license' > licenses && brlicenses -f full index.js >> licenses && echo '*/' >> licenses",
+    "prebuild": "npm run licenses",
+    "build": "browserify -p [ browserify-header --file licenses ] index.js | uglifyjs --comments > bundle.js",
+    "postbuild": "rm licenses"
+  }
+}
