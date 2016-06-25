@@ -9,9 +9,9 @@
     "commonform-normalize": "^0.5.2"
   },
   "scripts": {
-    "licenses": "echo '/*\n@license' > licenses && brlicenses -f full index.js >> licenses && echo '*/' >> licenses",
-    "prebuild": "npm run licenses",
-    "build": "browserify -p [ browserify-header --file licenses ] index.js | uglifyjs --comments > bundle.js",
-    "postbuild": "rm licenses"
+    "licenses-header.js": "echo '/*\n@license' > licenses-header.js && brlicenses -f full index.js >> licenses-header.js && echo '*/' >> licenses-header.js",
+    "prebuild": "npm run licenses-header.js",
+    "build": "browserify -p [ browserify-header --file licenses-header.js ] index.js | uglifyjs --comments > bundle.js",
+    "postbuild": "rm licenses-header.js"
   }
 }
